@@ -64,6 +64,12 @@ var pixelPainter = (function(){
   canvas.addEventListener("mousedown", drawMe);
   document.body.addEventListener("mouseup", stopDraw);
 
+  socket.on('canvas data', function(data){
+    for (var i = 0; i < canvasCells.length; i++){
+     canvasCells[i].style.backgroundColor = data[i];
+    }
+  });
+
   socket.on('paint', function(data){
     canvasCells[data.index].style.backgroundColor = data.color;
   });
