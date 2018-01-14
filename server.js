@@ -19,4 +19,8 @@ io.on('connection', (socket) => {
       color : paintData.color
     });
   });
+
+  socket.on('clear', () => {
+    io.emit('clear');
+  });
 });

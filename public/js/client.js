@@ -65,9 +65,14 @@ var pixelPainter = (function(){
   document.body.addEventListener("mouseup", stopDraw);
 
   socket.on('paint', function(data){
-    console.log(data);
     canvasCells[data.index].style.backgroundColor = data.color;
-  })
+  });
+
+  socket.on('clear', function(){
+    for (var i = 0; i < canvasCells.length; i++){
+      canvasCells[i].style.backgroundColor = "#ffffff";
+    }
+  });
 
   function paintColor(){
     if (isDrawing){
@@ -109,6 +114,7 @@ var pixelPainter = (function(){
     for (var i = 0; i < canvasCells.length; i++){
       canvasCells[i].style.backgroundColor = "#ffffff";
     }
+    socket.emit('clear');
   }
 
   function savePic(){
