@@ -8,10 +8,15 @@ Express.js, Socket.io, DB TBA.
 ## To do:
 
 - Persistent canvas data :o:
-- Chatroom
+- Chat box
 - User count
 - Save picture (DB)
   - Picture gallery
 - Usernames/login
 - Separate spaces (rooms)
 - 🌱🌱🌱Deploy🌱🌱🌱
+
+## Stretch:
+
+- Pixels -> HTML5 Canvas
+- Upload background image to draw on
