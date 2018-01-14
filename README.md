@@ -7,9 +7,11 @@ Express.js, Socket.io, DB TBA.
 
 ## To do:
 
-- Persistent canvas data
-- Save function
+- Persistent canvas data :o:
+- Chatroom
 - User count
+- Save picture (DB)
+  - Picture gallery
 - Usernames/login
 - Separate spaces (rooms)
-- Deploy🌱
+- 🌱🌱🌱Deploy🌱🌱🌱
