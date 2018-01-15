@@ -11,14 +11,14 @@
     <div id="paint-studio">
       <div id="palette"></div>
       <div id="canvas"></div>
-    </div>
-    <div id="chat">
-      <div id="discussion-space">
-        <ul id="messages"></ul>
+      <div id="chat">
+        <div id="discussion-space">
+          <ul id="messages"></ul>
+        </div>
+        <form id="form" action="">
+          <input id="m" name="msg" autocomplete="off" /><button>Send</button>
+        </form>
       </div>
-      <form id="form" action="">
-        <input id="m" name="msg" autocomplete="off" /><button>Send</button>
-      </form>
     </div>
   </div>
   <script src="/socket.io/socket.io.js"></script>
