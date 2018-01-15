@@ -14,7 +14,7 @@ Express.js, Socket.io, DB TBA.
   - Picture gallery
 - Usernames/login
 - Separate spaces (rooms)
-- 🌱🌱🌱Deploy🌱🌱🌱
+- 🌱🌱🌱Deploy (Azure)🌱🌱🌱
 
 ## Stretch:
 
