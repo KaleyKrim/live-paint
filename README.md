@@ -8,7 +8,7 @@ Express.js, Socket.io, DB TBA.
 ## To do:
 
 - Persistent canvas data :o:
-- Chat box
+- Chat box ⭕️
 - User count
 - Save picture (DB)
   - Picture gallery
