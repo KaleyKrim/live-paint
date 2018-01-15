@@ -5,6 +5,9 @@ const port = process.env.port || 8080;
 const io = require('socket.io')(http);
 const path = require('path');
 
+const users = {};
+let userCount = 0;
+
 let currentCanvas = [];
 
 for(let i = 0; i < 625; i++){
@@ -19,6 +22,42 @@ http.listen(port, () => {
 
 io.on('connection', (socket) => {
   socket.emit('canvas data', currentCanvas);
+  userCount++;
+  users[socket.id] = null;
+
+  io.emit('users', users);
+  socket.emit('admin', `Oh, hey there. What's your name?`);
+
+  socket.on('add user', (name)=> {
+    let currentUsers = Object.keys(users).map(function(key) {
+      return users[key];
+    });
+    if(currentUsers.indexOf(name.toLowerCase()) >= 0){
+      socket.emit('admin', `You can't be ${name}, the REAL ${name} is already here chatting. Who are you REALLY?`);
+    }else{
+      socket.username = name.toLowerCase();
+      users[socket.id] = name.toLowerCase();
+      socket.emit('set name', name);
+      io.emit('login', {
+        userCount : userCount,
+        username: socket.username
+      });
+    }
+  });
+
+  socket.on('chat message', (msg) => {
+    io.emit('chat message', msg);
+  });
+
+  socket.on('disconnect', () => {
+    userCount--;
+    delete users[socket.id];
+    io.emit('logout', {
+      username: socket.username,
+      userCount : userCount
+    });
+    console.log('user disconnected');
+  });
 
   socket.on('paint', (paintData) => {
     currentCanvas[paintData.index] = paintData.color;
