@@ -7,17 +7,17 @@ const path = require('path');
 
 const users = {};
 let userCount = 0;
-
 let currentCanvas = [];
-
-for(let i = 0; i < 625; i++){
-  currentCanvas.push['#ffffff'];
-}
 
 app.use(express.static(path.join(__dirname, 'public')));
 
 http.listen(port, () => {
   console.log(`Server listening on ${port}`);
+  currentCanvas = [];
+  for(let i = 0; i < 625; i++){
+    currentCanvas.push['#ffffff'];
+  }
+
 });
 
 io.on('connection', (socket) => {
@@ -38,10 +38,7 @@ io.on('connection', (socket) => {
       socket.username = name.toLowerCase();
       users[socket.id] = name.toLowerCase();
       socket.emit('set name', name);
-      io.emit('login', {
-        userCount : userCount,
-        username: socket.username
-      });
+      io.emit('admin', `${socket.username} has joined the chat!`);
     }
   });
 
