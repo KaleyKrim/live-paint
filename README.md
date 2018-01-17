@@ -3,13 +3,13 @@
 
 ## Tools:
 
-Express.js, Socket.io, DB TBA.
+Express.js, Socket.io, PostgreSQL DB.
 
 ## To do:
 
 - Persistent canvas data :o:
 - Chat box ⭕️
-- User count
+- User count ⭕️
 - Save picture (DB)
   - Picture gallery
 - Usernames/login
