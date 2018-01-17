@@ -4,6 +4,8 @@ const http = require('http').Server(app);
 const port = process.env.port || 8080;
 const io = require('socket.io')(http);
 const path = require('path');
+const bodyParser = require('body-parser');
+const db = require('./models')
 
 const users = {};
 let userCount = 0;
@@ -13,6 +15,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 http.listen(port, () => {
   console.log(`Server listening on ${port}`);
+  db.sequelize.sync({ force: true });
   currentCanvas = [];
   for(let i = 0; i < 625; i++){
     currentCanvas.push['#ffffff'];
