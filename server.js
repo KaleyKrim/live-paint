@@ -16,6 +16,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 http.listen(port, () => {
   console.log(`Server listening on ${port}`);
   db.sequelize.sync({ force: true });
+  userCount = 0;
   currentCanvas = [];
   for(let i = 0; i < 625; i++){
     currentCanvas.push['#ffffff'];
@@ -25,10 +26,9 @@ http.listen(port, () => {
 
 io.on('connection', (socket) => {
   socket.emit('canvas data', currentCanvas);
-  userCount++;
   users[socket.id] = null;
-
-  io.emit('users', users);
+  userCount++;
+  io.emit('user count', userCount);
   socket.emit('admin', `Oh, hey there. What's your name?`);
 
   socket.on('add user', (name)=> {
@@ -56,6 +56,7 @@ io.on('connection', (socket) => {
       username: socket.username,
       userCount : userCount
     });
+    io.emit('user count', userCount);
     console.log('user disconnected');
   });
 
