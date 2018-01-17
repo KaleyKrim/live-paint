@@ -1,4 +1,4 @@
-var socket = io.connect("localhost:8080/");
+var socket = io.connect("192.168.0.9:8080/");
 
 var messages = document.getElementById('messages');
 var form = document.getElementById('form');
