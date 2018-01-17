@@ -4,16 +4,63 @@ const http = require('http').Server(app);
 const port = process.env.port || 8080;
 const io = require('socket.io')(http);
 const path = require('path');
+const bodyParser = require('body-parser');
+const db = require('./models')
+
+const users = {};
+let userCount = 0;
+let currentCanvas = [];
 
 app.use(express.static(path.join(__dirname, 'public')));
 
 http.listen(port, () => {
   console.log(`Server listening on ${port}`);
+  db.sequelize.sync({ force: true });
+  currentCanvas = [];
+  for(let i = 0; i < 625; i++){
+    currentCanvas.push['#ffffff'];
+  }
+
 });
 
 io.on('connection', (socket) => {
+  socket.emit('canvas data', currentCanvas);
+  userCount++;
+  users[socket.id] = null;
+
+  io.emit('users', users);
+  socket.emit('admin', `Oh, hey there. What's your name?`);
+
+  socket.on('add user', (name)=> {
+    let currentUsers = Object.keys(users).map(function(key) {
+      return users[key];
+    });
+    if(currentUsers.indexOf(name.toLowerCase()) >= 0){
+      socket.emit('admin', `You can't be ${name}, the REAL ${name} is already here chatting. Who are you REALLY?`);
+    }else{
+      socket.username = name.toLowerCase();
+      users[socket.id] = name.toLowerCase();
+      socket.emit('set name', name);
+      io.emit('admin', `${socket.username} has joined the chat!`);
+    }
+  });
+
+  socket.on('chat message', (msg) => {
+    io.emit('chat message', msg);
+  });
+
+  socket.on('disconnect', () => {
+    userCount--;
+    delete users[socket.id];
+    io.emit('logout', {
+      username: socket.username,
+      userCount : userCount
+    });
+    console.log('user disconnected');
+  });
+
   socket.on('paint', (paintData) => {
-    console.log(paintData);
+    currentCanvas[paintData.index] = paintData.color;
     io.emit('paint', {
       index : paintData.index,
       color : paintData.color
@@ -21,6 +68,9 @@ io.on('connection', (socket) => {
   });
 
   socket.on('clear', () => {
+    for(let i = 0; i < currentCanvas.length; i++){
+      currentCanvas[i] = "#ffffff";
+    }
     io.emit('clear');
   });
 });
