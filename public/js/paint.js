@@ -1,15 +1,16 @@
-var socket = io.connect("192.168.0.9:8080/");
+var socket = io.connect("192.168.0.2:8080/");
 
 var pixelPainter = (function(){
 
   var canvas = document.getElementById("canvas");
   var sidebar = document.getElementById("palette");
+  var userCount = document.getElementById('user-count');
 
   var toolTable = document.getElementsByClassName("tools");
   var colorSwatches = document.getElementsByClassName("palette-pixel");
   var canvasCells = document.getElementsByClassName("canvas-pixel");
 
-  var colorArray = ["#ffffff", "#FF6AD5", "#C774E8", "#AD8CFF", "#8795E8", "#94D0FF", "#FFD0DE", "#FF3DD1", "#EA40AA", "#C0FBE7", "#57CDBA", "#77FED5", "#000000", "#F5D400", "#32006C", "#AF00FF", "#00F3FF", "#2C00FF"];
+  var colorArray = ["#000000", "#990066", "#330099", "#000066", "#0033ff", "#0099ff", "#00ffcc", " #009966", " #00cc00", " #ffff00", "#ff9900", "#ff6666", "#ff0000", "#ff3366", "#ff99cc", "#ccffff", "#ccccff", "#ffffff"];
   var currentColor = colorArray[0];
   var isDrawing = false;
   var savedPicture = [];
@@ -24,7 +25,7 @@ var pixelPainter = (function(){
 
   makeGrid(625, "canvas-pixel", canvas);
   makeGrid(18, "palette-pixel", sidebar);
-  makeGrid(4, "tools", sidebar);
+  makeGrid(3, "tools", sidebar);
 
   (function fillColorPalette(arr){
     for (var i = 0; i < arr.length; i++) {
@@ -40,13 +41,10 @@ var pixelPainter = (function(){
 
   toolTable[0].innerHTML = "E R A S E";
   toolTable[1].innerHTML = "C L E A R";
-  toolTable[2].innerHTML = "S A V E";
-  toolTable[3].innerHTML = "L O A D";
+  toolTable[2].innerHTML = "Save to Gallery";
   toolTable[0].addEventListener("click", eraseColor);
   toolTable[1].addEventListener("click", clearCanvas);
   toolTable[2].addEventListener("click", savePic);
-  toolTable[3].addEventListener("click", loadPic);
-
 
   function selectColor(x){
     currentColor = x.target.style.backgroundColor;
@@ -75,6 +73,17 @@ var pixelPainter = (function(){
   socket.on('clear', function(){
     for (var i = 0; i < canvasCells.length; i++){
       canvasCells[i].style.backgroundColor = "#ffffff";
+    }
+  });
+
+  socket.on('user count', function(count){
+    var realCount = count/2;
+    console.log(realCount);
+    console.log(count/2);
+    if((count/2) < 2){
+      userCount.innerHTML = `There's 1 user online right now. ;( <br /> Maybe everyone else is stuck in foot traffic??`;
+    }else{
+      userCount.innerHTML = `There are ${count/2} users online right now. Party time!!`
     }
   });
 
@@ -129,9 +138,4 @@ var pixelPainter = (function(){
 
   }
 
-  function loadPic(){
-    for (var i =0; i < canvasCells.length; i++){
-     canvasCells[i].style.backgroundColor = savedPicture[i];
-    }
-  }
 }());
