@@ -1,3 +1,7 @@
+body{
+  font-family: 'Work Sans', sans-serif;
+}
+
 #header{
   display: flex;
   justify-content: center;
@@ -6,6 +10,19 @@
 #text{
   width: 200px;
   line-height: 60px;
+}
+
+#nav{
+  display: flex;
+  justify-content: center;
+}
+
+#gallery{
+  color: white;
+  background-color: #FF2300;
+  border-radius: 6px;
+  height: 45px;
+  font-size: 140%;
 }
 
 h1 {
@@ -25,6 +42,21 @@ h1 {
 }
 .orange{
   color: #FF9E00;
+}
+
+#kitty:hover
+{
+  -webkit-transform: rotateZ(10deg);
+  -ms-transform: rotateZ(10deg);
+  transform: rotateZ(10deg);
+}
+
+
+#jelly:hover
+{
+  -webkit-transform: rotateZ(-10deg);
+  -ms-transform: rotateZ(-10deg);
+  transform: rotateZ(-10deg);
 }
 
 #kitty{
@@ -57,7 +89,6 @@ h1 {
 .palette-pixel{
   border: 2px solid;
   border-color: black;
-  border-radius: 15px;
   cursor:pointer;
   height: 40px;
   width: 40px;
@@ -79,9 +110,11 @@ h1 {
 
 #palette{
   width: 132px;
-  height: 440px;
+  height: 395px;
   display: flex;
   flex-wrap: wrap;
+  border-style: black 1px solid;
+  margin-right: 2%;
 }
 
 #canvas{
@@ -103,11 +136,20 @@ h1 {
   justify-content: center;
 }
 
+#user-count{
+  color: #FF2300;
+}
+
+#right-side{
+  display: flex;
+  flex-direction: column;
+}
+
 #chat{
   margin-left: 2%;
   border: 1px solid black;
-  width: 30%;
-  height: 30%;
+  width: 100%;
+  height: 100%;
   overflow: auto;
 }
 
@@ -142,7 +184,7 @@ form button {
 }
 
 #discussion-space{
-  height: 400px;
+  height: 450px;
 }
 
 @media (min-width: 600px){
