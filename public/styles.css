@@ -1,3 +1,50 @@
+#header{
+  display: flex;
+  justify-content: center;
+}
+
+#text{
+  width: 200px;
+  line-height: 60px;
+}
+
+h1 {
+  color: #FF2300;
+  font-size: 500%;
+  font-family: 'Barrio', cursive;
+}
+
+.vowel{
+  color: #00CDC4;
+}
+.special{
+  color: #00259B;
+}
+.green{
+  color: #34AF00;
+}
+.orange{
+  color: #FF9E00;
+}
+
+#kitty{
+  height: 200px;
+  width: 200px;
+  background-image: url("/assets/kitty.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+#jelly{
+  height: 200px;
+  width: 200px;
+  background-image: url("/assets/jelly.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
 .canvas-pixel{
   box-sizing:border-box;
   background-color: white;
