@@ -17,13 +17,14 @@ body{
   justify-content: center;
 }
 
-#gallery{
-  color: white;
-  background-color: #FF2300;
-  border-radius: 6px;
-  height: 45px;
-  font-size: 140%;
-}
+/*#gallery{
+  height: 100px;
+  width: 200px;
+  background-image: url("/assets/gallery.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}*/
 
 h1 {
   color: #FF2300;
@@ -95,17 +96,42 @@ h1 {
 }
 
 .tools{
+  opacity: .8;
   display: flex;
   align-items: center;
   justify-content: space-around;
   font-size: 110%;
   font-weight: bold;
   cursor:pointer;
-  background-color: #ef4566;
   color: white;
   border-radius: 15px;
-  height: 44px;
+  height: 80px;
   width: 132px;
+}
+
+.tools:hover{
+  opacity: 1;
+}
+
+.tools:nth-child(19){
+  background-image: url("/assets/erase.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.tools:nth-child(20){
+  background-image: url("/assets/clear.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.tools:nth-child(21){
+  background-image: url("/assets/save.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 #palette{

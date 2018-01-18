@@ -29,7 +29,7 @@ io.on('connection', (socket) => {
   users[socket.id] = null;
   userCount++;
   io.emit('user count', userCount);
-  socket.emit('admin', `Oh, hey there. What's your name?`);
+  socket.emit('admin', `Oh, hello there. What's your name?`);
 
   socket.on('add user', (name)=> {
     let currentUsers = Object.keys(users).map(function(key) {

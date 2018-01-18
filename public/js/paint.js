@@ -39,9 +39,9 @@ var pixelPainter = (function(){
     }
   }());
 
-  toolTable[0].innerHTML = "E R A S E";
-  toolTable[1].innerHTML = "C L E A R";
-  toolTable[2].innerHTML = "Save to Gallery";
+  // toolTable[0].style.backgroundImage = "url(./assets/erase.png)";;
+  // toolTable[1].innerHTML = "C L E A R";
+  // toolTable[2].innerHTML = "Save to Gallery";
   toolTable[0].addEventListener("click", eraseColor);
   toolTable[1].addEventListener("click", clearCanvas);
   toolTable[2].addEventListener("click", savePic);
@@ -81,9 +81,9 @@ var pixelPainter = (function(){
     console.log(realCount);
     console.log(count/2);
     if((count/2) < 2){
-      userCount.innerHTML = `There's 1 user online right now. ;( <br /> Maybe everyone else is stuck in foot traffic??`;
+      userCount.innerHTML = `You're the only user online right now ;( Too bad!`;
     }else{
-      userCount.innerHTML = `There are ${count/2} users online right now. Party time!!`
+      userCount.innerHTML = `There are ${count/2} users online right now! Party time!`
     }
   });
 
