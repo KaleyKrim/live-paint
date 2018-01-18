@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <title>Kaley's Live Paint!!</title>
   <link href="https://fonts.googleapis.com/css?family=Barrio" rel="stylesheet">
-  <link href="styles.css" rel="stylesheet" media="screen" />
+  <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+  <link href="./css/styles.css" rel="stylesheet" media="screen" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -13,18 +14,25 @@
     <div id="text"><h1><span class="special">P</span><span class="vowel">i</span>x<span class="orange">e</span><span class="special">l</span> <span class="orange">P</span><span class="vowel">a</span>rt<span class="green">y</span></h1></div>
     <div id="jelly"></div>
   </div>
+  <div id="nav">
+    <div id="gallery"></div>
+  </div>
   <div id="main">
     <div id="paint-studio">
       <div id="palette"></div>
       <div id="canvas"></div>
     </div>
-    <div id="chat">
+    <div id="right-side">
+      <div id="user-count"></div>
+      <div id="chat">
       <div id="discussion-space">
         <ul id="messages"></ul>
       </div>
       <form id="form" action="">
         <input id="m" name="msg" autocomplete="off" /><button>Send</button>
       </form>
+    </div>
+
     </div>
   </div>
   <script src="/socket.io/socket.io.js"></script>

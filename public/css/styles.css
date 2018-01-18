@@ -1,3 +1,7 @@
+body{
+  font-family: 'Work Sans', sans-serif;
+}
+
 #header{
   display: flex;
   justify-content: center;
@@ -7,6 +11,20 @@
   width: 200px;
   line-height: 60px;
 }
+
+#nav{
+  display: flex;
+  justify-content: center;
+}
+
+/*#gallery{
+  height: 100px;
+  width: 200px;
+  background-image: url("/assets/gallery.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}*/
 
 h1 {
   color: #FF2300;
@@ -25,6 +43,21 @@ h1 {
 }
 .orange{
   color: #FF9E00;
+}
+
+#kitty:hover
+{
+  -webkit-transform: rotateZ(10deg);
+  -ms-transform: rotateZ(10deg);
+  transform: rotateZ(10deg);
+}
+
+
+#jelly:hover
+{
+  -webkit-transform: rotateZ(-10deg);
+  -ms-transform: rotateZ(-10deg);
+  transform: rotateZ(-10deg);
 }
 
 #kitty{
@@ -57,31 +90,57 @@ h1 {
 .palette-pixel{
   border: 2px solid;
   border-color: black;
-  border-radius: 15px;
   cursor:pointer;
   height: 40px;
   width: 40px;
 }
 
 .tools{
+  opacity: .8;
   display: flex;
   align-items: center;
   justify-content: space-around;
   font-size: 110%;
   font-weight: bold;
   cursor:pointer;
-  background-color: #ef4566;
   color: white;
   border-radius: 15px;
-  height: 44px;
+  height: 80px;
   width: 132px;
+}
+
+.tools:hover{
+  opacity: 1;
+}
+
+.tools:nth-child(19){
+  background-image: url("/assets/erase.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.tools:nth-child(20){
+  background-image: url("/assets/clear.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.tools:nth-child(21){
+  background-image: url("/assets/save.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 #palette{
   width: 132px;
-  height: 440px;
+  height: 395px;
   display: flex;
   flex-wrap: wrap;
+  border-style: black 1px solid;
+  margin-right: 2%;
 }
 
 #canvas{
@@ -94,6 +153,7 @@ h1 {
 
 #paint-studio{
   height: 65%;
+  min-width: 650px;
   display: flex;
   justify-content: center;
 }
@@ -103,11 +163,20 @@ h1 {
   justify-content: center;
 }
 
-#chat{
+#user-count{
+  color: #FF2300;
+}
+
+#right-side{
   margin-left: 2%;
+  display: flex;
+  flex-direction: column;
+}
+
+#chat{
   border: 1px solid black;
-  width: 30%;
-  height: 30%;
+  width: 100%;
+  height: 100%;
   overflow: auto;
 }
 
@@ -142,7 +211,7 @@ form button {
 }
 
 #discussion-space{
-  height: 400px;
+  height: 450px;
 }
 
 @media (min-width: 600px){

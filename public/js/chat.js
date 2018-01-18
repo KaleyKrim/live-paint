@@ -1,4 +1,4 @@
-var socket = io.connect("192.168.0.9:8080/");
+var socket = io.connect("192.168.0.2:8080/");
 
 var messages = document.getElementById('messages');
 var form = document.getElementById('form');
@@ -26,13 +26,11 @@ socket.on('set name', function(name){
 
 socket.on('login', function(userData){
   users.push(userData.username);
-  userCount = userData.userCount;
   console.log(users);
 });
 
 socket.on('logout', function(userData){
   users.splice(users.indexOf(userData.username), 1);
-  userCount = userData.userCount;
 });
 
 socket.on('chat message', function(message){
