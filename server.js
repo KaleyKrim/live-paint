@@ -3,15 +3,21 @@ const app = express();
 const http = require('http').Server(app);
 const port = process.env.port || 8080;
 const io = require('socket.io')(http);
+
 const path = require('path');
 const bodyParser = require('body-parser');
+
 const db = require('./models')
+const api = require('./api');
 
 const users = {};
 let userCount = 0;
 let currentCanvas = [];
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.urlencoded({ "extended" : false }));
+app.use(bodyParser.json());
+app.use('/api', api);
 
 http.listen(port, () => {
   console.log(`Server listening on ${port}`);
@@ -21,7 +27,6 @@ http.listen(port, () => {
   for(let i = 0; i < 625; i++){
     currentCanvas.push['#ffffff'];
   }
-
 });
 
 io.on('connection', (socket) => {
