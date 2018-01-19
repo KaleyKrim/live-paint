@@ -63,3 +63,21 @@ h1 {
   background-repeat: no-repeat;
   background-position: center center;
 }
+
+#gallery-space{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.canvas{
+  height: 125px;
+  width: 125px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.canvas-pixel{
+  height: 5px;
+  width: 5px;
+}
