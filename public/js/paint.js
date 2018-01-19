@@ -138,11 +138,16 @@ var pixelPainter = (function(){
     });
   }
 
-  function rgb2hex(red, green, blue) {
-    var rgb = blue | (green << 8) | (red << 16);
-    return '#' + (0x1000000 + rgb).toString(16).slice(1)
+  function hexc(colorval) {
+    var parts = colorval.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+    delete(parts[0]);
+    for (var i = 1; i <= 3; ++i) {
+        parts[i] = parseInt(parts[i]).toString(16);
+        if (parts[i].length == 1) parts[i] = '0' + parts[i];
+    }
+    color = '#' + parts.join('');
+    return color;
   }
-
 
   function getPicData(){
     title = null;
@@ -152,8 +157,7 @@ var pixelPainter = (function(){
       if(!(canvasCells[i].style.backgroundColor)){
         savedPicture.push('#ffffff');
       }else{
-        var numbers = (canvasCells[i].style.backgroundColor.slice(4, 15)).split(',');
-        savedPicture.push(rgb2hex(numbers[0], numbers[1], numbers[2]));
+        savedPicture.push(hexc(canvasCells[i].style.backgroundColor));
       }
     }
 
