@@ -15,7 +15,6 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  console.log(req.body);
   return Painting.create({
     title: req.body.title,
     data: req.body.data
@@ -30,6 +29,25 @@ router.post('/', (req, res) => {
   .catch((err) => {
     console.log(err);
   })
+});
+
+router.put('/:id', (req, res) => {
+  let newData = req.body;
+  let id = req.params.id;
+
+  return Painting.findById(id)
+  .then((painting) => {
+    return painting.update(newData, {
+      returning: true,
+      plain: true
+    })
+    .then(painting => {
+      return res.json(painting);
+    })
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 });
 
 module.exports = router;
