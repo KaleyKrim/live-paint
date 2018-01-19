@@ -22,7 +22,7 @@ app.use('/api', api);
 
 http.listen(port, () => {
   console.log(`Server listening on ${port}`);
-  db.sequelize.sync({ force: true });
+  db.sequelize.sync({ force: false });
   userCount = 0;
   currentCanvas = [];
   for(let i = 0; i < 625; i++){
