@@ -15,13 +15,14 @@ let userCount = 0;
 let currentCanvas = [];
 
 app.use(express.static(path.join(__dirname, 'public')));
+
 app.use(bodyParser.urlencoded({ "extended" : false }));
 app.use(bodyParser.json());
 app.use('/api', api);
 
 http.listen(port, () => {
   console.log(`Server listening on ${port}`);
-  db.sequelize.sync({ force: true });
+  db.sequelize.sync({ force: false });
   userCount = 0;
   currentCanvas = [];
   for(let i = 0; i < 625; i++){
