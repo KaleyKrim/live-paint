@@ -13,6 +13,7 @@ var pixelPainter = (function(){
   var colorArray = ["#000000", "#990066", "#330099", "#000066", "#0033ff", "#0099ff", "#00ffcc", " #009966", " #00cc00", " #ffff00", "#ff9900", "#ff6666", "#ff0000", "#ff3366", "#ff99cc", "#ccffff", "#ccccff", "#ffffff"];
   var currentColor = colorArray[0];
   var isDrawing = false;
+  var title = null;
   var savedPicture = [];
 
   function makeGrid(boxes, className, parentDiv){
@@ -44,7 +45,7 @@ var pixelPainter = (function(){
   // toolTable[2].innerHTML = "Save to Gallery";
   toolTable[0].addEventListener("click", eraseColor);
   toolTable[1].addEventListener("click", clearCanvas);
-  toolTable[2].addEventListener("click", savePic);
+  toolTable[2].addEventListener("click", getPicData);
 
   function selectColor(x){
     currentColor = x.target.style.backgroundColor;
@@ -130,12 +131,37 @@ var pixelPainter = (function(){
     socket.emit('clear');
   }
 
-  function savePic(){
+  function savePic(title, picture){
+    axios.post('/api/paintings', {
+      title: title,
+      data: picture
+    });
+  }
+
+  function rgb2hex(red, green, blue) {
+    var rgb = blue | (green << 8) | (red << 16);
+    return '#' + (0x1000000 + rgb).toString(16).slice(1)
+  }
+
+
+  function getPicData(){
+    title = null;
     savedPicture = [];
+
     for (var i = 0; i < canvasCells.length; i++){
-      savedPicture.push(canvasCells[i].style.backgroundColor);
+      if(!(canvasCells[i].style.backgroundColor)){
+        savedPicture.push('#ffffff');
+      }else{
+        var numbers = (canvasCells[i].style.backgroundColor.slice(4, 15)).split(',');
+        savedPicture.push(rgb2hex(numbers[0], numbers[1], numbers[2]));
+      }
     }
 
+    title = prompt("What do you want to title it?");
+
+    if(title && savedPicture.length > 0){
+      savePic(title, savedPicture.toString());
+    }
   }
 
 }());
