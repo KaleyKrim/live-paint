@@ -68,16 +68,20 @@ h1 {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  width: 70%;
+  margin: auto;
 }
 
 .canvas{
-  height: 125px;
-  width: 125px;
+  height: 200px;
+  width: 200px;
   display: flex;
   flex-wrap: wrap;
+  border: 1px solid;
+  border-color: black;
 }
 
 .canvas-pixel{
-  height: 5px;
-  width: 5px;
+  height: 8px;
+  width: 8px;
 }

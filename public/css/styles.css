@@ -17,15 +17,6 @@ body{
   justify-content: center;
 }
 
-/*#gallery{
-  height: 100px;
-  width: 200px;
-  background-image: url("/assets/gallery.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
-}*/
-
 h1 {
   color: #FF2300;
   font-size: 500%;
