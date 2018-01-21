@@ -186,7 +186,8 @@ form input {
 
 form button {
   width: 23%;
-  background: #f13b63;
+  background: white;
+  color: #00CDC4;
   border: none;
   padding: 10px;
 }
