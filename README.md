@@ -10,8 +10,8 @@ Express.js, Socket.io, PostgreSQL DB.
 - Persistent canvas data :o:
 - Chat box ⭕️
 - User count ⭕️
-- Save picture (DB)
-  - Picture gallery
+- Save picture (DB) ⭕️
+  - Picture gallery ⭕️
 - Usernames/login
 - Separate spaces (rooms)
 - 🌱🌱🌱Deploy (Azure)🌱🌱🌱
