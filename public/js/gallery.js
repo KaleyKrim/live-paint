@@ -7,10 +7,12 @@ function makeDiv(className, parentDiv){
   return div;
 }
 
-function makeCanvas(title, data){
+function makeCanvas(title, createdAt, data){
   var div = makeDiv('piece', gallery);
   var titleDiv = makeDiv('title', div);
+  var timeStamp = makeDiv('date', div);
   titleDiv.innerHTML = title;
+  timeStamp.innerHTML = `Saved ` + moment(createdAt).fromNow();
   var canvas = makeDiv('canvas', div);
 
   for (var x = 0; x < 625; x++){
@@ -28,11 +30,9 @@ function getPaintings(){
     var paintings = response.data;
     console.log(paintings);
     for(var i = 0; i < paintings.length; i++){
-      makeCanvas(paintings[i].title, paintings[i].data.split(','));
+      makeCanvas(paintings[i].title, paintings[i].createdAt, paintings[i].data.split(','));
     }
   });
 }
 
 window.onload = getPaintings;
-
-console.log('smoke test');
