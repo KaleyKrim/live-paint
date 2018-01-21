@@ -85,3 +85,18 @@ h1 {
   height: 8px;
   width: 8px;
 }
+
+.piece{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1%;
+  text-align: center;
+}
+
+.title{
+  font-size: 120%;
+}
+
+.date{
+  font-size: 80%;
+}
