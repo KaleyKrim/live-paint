@@ -9,18 +9,17 @@ function makeDiv(className, parentDiv){
 
 function makeCanvas(title, createdAt, data){
   var div = makeDiv('piece', gallery);
-  var titleDiv = makeDiv('title', div);
-  var timeStamp = makeDiv('date', div);
-  titleDiv.innerHTML = title;
-  timeStamp.innerHTML = `Saved ` + moment(createdAt).fromNow();
   var canvas = makeDiv('canvas', div);
-
   for (var x = 0; x < 625; x++){
     var row = document.createElement("div");
     row.className = 'canvas-pixel';
     canvas.appendChild(row);
     row.style.backgroundColor = data[x];
   }
+  var titleDiv = makeDiv('title', div);
+  var timeStamp = makeDiv('date', div);
+  titleDiv.innerHTML = title;
+  timeStamp.innerHTML = `Saved ` + moment(createdAt).fromNow();
 }
 
 function getPaintings(){
