@@ -40,9 +40,6 @@ var pixelPainter = (function(){
     }
   }());
 
-  // toolTable[0].style.backgroundImage = "url(./assets/erase.png)";;
-  // toolTable[1].innerHTML = "C L E A R";
-  // toolTable[2].innerHTML = "Save to Gallery";
   toolTable[0].addEventListener("click", eraseColor);
   toolTable[1].addEventListener("click", clearCanvas);
   toolTable[2].addEventListener("click", getPicData);
@@ -161,7 +158,7 @@ var pixelPainter = (function(){
       }
     }
 
-    title = prompt("What do you want to title it?");
+    title = prompt("What do you want to title it? (Keep it short!!)");
 
     if(title && savedPicture.length > 0){
       savePic(title, savedPicture.toString());
