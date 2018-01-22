@@ -90,13 +90,16 @@ var pixelPainter = (function(){
       for(var i = 0; i < canvasCells.length; i++){
         if (canvasCells[i] === this) {
           index = i;
+          console.log(index);
         }
       }
 
       var data = {
         index: index,
-        color: this.style.backgroundColor
+        color: currentColor
       };
+
+      console.log(data);
 
       socket.emit('paint', data);
 
