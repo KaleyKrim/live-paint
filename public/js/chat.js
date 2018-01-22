@@ -26,7 +26,6 @@ socket.on('set name', function(name){
 
 socket.on('login', function(userData){
   users.push(userData.username);
-  console.log(users);
 });
 
 socket.on('logout', function(userData){

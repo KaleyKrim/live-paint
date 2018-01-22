@@ -76,8 +76,6 @@ var pixelPainter = (function(){
 
   socket.on('user count', function(count){
     var realCount = count/2;
-    console.log(realCount);
-    console.log(count/2);
     if((count/2) < 2){
       userCount.innerHTML = `You're the only user online right now ;( Too bad!`;
     }else{
