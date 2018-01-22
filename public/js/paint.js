@@ -1,4 +1,4 @@
-var socket = io.connect("192.168.0.2:8080/");
+var socket = io.connect("165.227.60.172:8080/");
 
 var pixelPainter = (function(){
 

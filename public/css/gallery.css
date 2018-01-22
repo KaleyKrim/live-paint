@@ -12,6 +12,16 @@ body{
   line-height: 60px;
 }
 
+#footer{
+  width: 100%;
+  text-align: center;
+}
+
+a{
+  color: #FF2300;
+  text-decoration: none;
+}
+
 h1 {
   color: #FF2300;
   font-size: 500%;
