@@ -5,7 +5,14 @@ const db = require('../models');
 const Painting = db.painting;
 
 router.get('/', (req, res) => {
-  return Painting.findAll()
+  return Painting.findAll({
+    where: {
+      deletedAt: null
+    },
+    order: [
+      ['id', 'DESC']
+    ]
+  })
   .then(paintings => {
     return res.json(paintings);
   })

@@ -17,16 +17,7 @@ body{
   justify-content: center;
 }
 
-/*#gallery{
-  height: 100px;
-  width: 200px;
-  background-image: url("/assets/gallery.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
-}*/
-
-h1 {
+h1{
   color: #FF2300;
   font-size: 500%;
   font-family: 'Barrio', cursive;
@@ -195,7 +186,8 @@ form input {
 
 form button {
   width: 23%;
-  background: #f13b63;
+  background: #00CDC4;
+  color: white;
   border: none;
   padding: 10px;
 }
