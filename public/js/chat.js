@@ -1,4 +1,4 @@
-var socket = io.connect("165.227.60.172:8080/");
+var socket = io.connect("165.227.60.172");
 
 var messages = document.getElementById('messages');
 var form = document.getElementById('form');
@@ -26,7 +26,6 @@ socket.on('set name', function(name){
 
 socket.on('login', function(userData){
   users.push(userData.username);
-  console.log(users);
 });
 
 socket.on('logout', function(userData){
