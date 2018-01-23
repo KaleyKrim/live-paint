@@ -1,6 +1,10 @@
 # Live Paint
 🎨  Part III in the Socket.io saga 🌈🌻🍭 Paint with friends!!
 
+## Demo
+
+Test it out at http://165.227.60.172/
+
 ## Tools:
 
 Express.js, Socket.io, PostgreSQL DB.
