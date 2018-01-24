@@ -18,7 +18,7 @@ Express.js, Socket.io, PostgreSQL DB.
   - Picture gallery ⭕️
 - Usernames/login
 - Separate spaces (rooms)
-- 🌱🌱🌱Deploy🌱🌱🌱
+- 🌱🌱🌱Deploy🌱🌱🌱⭕️
 
 ## Stretch:
 
