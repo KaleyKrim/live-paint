@@ -56,6 +56,7 @@ var pixelPainter = (function(){
   }());
 
   canvas.addEventListener("mousedown", drawMe);
+  canvas.addEventListener("onclick", drawMe);
   document.body.addEventListener("mouseup", stopDraw);
 
   socket.on('canvas data', function(data){
@@ -90,7 +91,6 @@ var pixelPainter = (function(){
       for(var i = 0; i < canvasCells.length; i++){
         if (canvasCells[i] === this) {
           index = i;
-          console.log(index);
         }
       }
 
@@ -99,8 +99,6 @@ var pixelPainter = (function(){
         color: currentColor
       };
 
-      console.log(data);
-
       socket.emit('paint', data);
 
     }
@@ -108,6 +106,20 @@ var pixelPainter = (function(){
 
   function clickColor(){
     this.style.backgroundColor = currentColor;
+
+    var index;
+    for(var i = 0; i < canvasCells.length; i++){
+      if (canvasCells[i] === this) {
+        index = i;
+      }
+    }
+
+    var data = {
+      index: index,
+      color: currentColor
+    };
+
+    socket.emit('paint', data);
   }
 
   function eraseColor(){
