@@ -23,11 +23,9 @@ function makeCanvas(title, createdAt, data){
 }
 
 function getPaintings(){
-  console.log('hello??');
   axios.get('/api/paintings')
   .then(function (response) {
     var paintings = response.data;
-    console.log(paintings);
     for(var i = 0; i < paintings.length; i++){
       makeCanvas(paintings[i].title, paintings[i].createdAt, paintings[i].data.split(','));
     }
