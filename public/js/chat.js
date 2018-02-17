@@ -7,6 +7,13 @@ var val = document.getElementById('m');
 var username = null;
 var users = [];
 
+function postMessage(nameForClass, messageBody, placeToAppend){
+  var messageToPost = document.createElement('li');
+  messageToPost.className = nameForClass;
+  messageToPost.innerHTML = messageBody;
+  placeToAppend.appendChild(messageToPost);
+};
+
 form.addEventListener('submit', function(event){
   event.preventDefault();
   if(!username){
@@ -33,10 +40,10 @@ socket.on('logout', function(userData){
 });
 
 socket.on('chat message', function(message){
-  postMessage(message, 'user-msg');
+  postMessage('user-msg', message, messages);
   updateScroll();
 });
 
 socket.on('admin', function(message){
-  postMessage(message, 'admin');
+  postMessage('admin', message, messages);
 });

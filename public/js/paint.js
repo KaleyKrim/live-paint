@@ -5,44 +5,31 @@ var pixelPainter = (function(){
   var canvas = document.getElementById("canvas");
   var sidebar = document.getElementById("palette");
   var userCount = document.getElementById('user-count');
-
   var toolTable = document.getElementsByClassName("tools");
-  var colorSwatches = document.getElementsByClassName("palette-pixel");
+  var palettePixels = document.getElementsByClassName("palette-pixel");
   var canvasCells = document.getElementsByClassName("canvas-pixel");
-
   var colorArray = ["#000000", "#990066", "#330099", "#000066", "#0033ff", "#0099ff", "#00ffcc", " #009966", " #00cc00", " #ffff00", "#ff9900", "#ff6666", "#ff0000", "#ff3366", "#ff99cc", "#ccffff", "#ccccff", "#ffffff"];
   var currentColor = colorArray[0];
   var isDrawing = false;
   var title = null;
   var savedPicture = [];
 
-  function makeGrid(boxes, className, parentDiv){
-    for (var x=0; x<boxes; x++){
-      var row = document.createElement("div");
-      row.className = className;
-      parentDiv.appendChild(row);
-    }
-  }
-
   makeGrid(625, "canvas-pixel", canvas);
   makeGrid(18, "palette-pixel", sidebar);
   makeGrid(3, "tools", sidebar);
 
-  (function fillColorPalette(arr){
-    for (var i = 0; i < arr.length; i++) {
-      arr[i].style.backgroundColor = colorArray[i];
-    }
-  }(colorSwatches));
+  fillColorPalette(palettePixels, colorArray);
 
   (function (){
-    for (var i = 0; i < colorSwatches.length; i++){
-      colorSwatches[i].addEventListener("click", selectColor);
+    for (var i = 0; i < palettePixels.length; i++){
+      palettePixels[i].addEventListener("click", selectColor);
     }
   }());
 
   toolTable[0].addEventListener("click", eraseColor);
   toolTable[1].addEventListener("click", clearCanvas);
   toolTable[2].addEventListener("click", getPicData);
+
 
   function selectColor(x){
     currentColor = x.target.style.backgroundColor;
@@ -93,32 +80,26 @@ var pixelPainter = (function(){
           index = i;
         }
       }
-
       var data = {
         index: index,
         color: currentColor
       };
-
       socket.emit('paint', data);
-
     }
   }
 
   function clickColor(){
     this.style.backgroundColor = currentColor;
-
     var index;
     for(var i = 0; i < canvasCells.length; i++){
       if (canvasCells[i] === this) {
         index = i;
       }
     }
-
     var data = {
       index: index,
       color: currentColor
     };
-
     socket.emit('paint', data);
   }
 
@@ -141,28 +122,9 @@ var pixelPainter = (function(){
     socket.emit('clear');
   }
 
-  function savePic(title, picture){
-    axios.post('/api/paintings', {
-      title: title,
-      data: picture
-    });
-  }
-
-  function hexc(colorval) {
-    var parts = colorval.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
-    delete(parts[0]);
-    for (var i = 1; i <= 3; ++i) {
-        parts[i] = parseInt(parts[i]).toString(16);
-        if (parts[i].length == 1) parts[i] = '0' + parts[i];
-    }
-    color = '#' + parts.join('');
-    return color;
-  }
-
   function getPicData(){
     title = null;
     savedPicture = [];
-
     for (var i = 0; i < canvasCells.length; i++){
       if(!(canvasCells[i].style.backgroundColor)){
         savedPicture.push('#ffffff');
@@ -170,9 +132,7 @@ var pixelPainter = (function(){
         savedPicture.push(hexc(canvasCells[i].style.backgroundColor));
       }
     }
-
     title = prompt("What do you want to title it? (Keep it short!!)");
-
     if(title && savedPicture.length > 0){
       savePic(title, savedPicture.toString());
     }
