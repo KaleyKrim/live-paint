@@ -1,5 +1,5 @@
-// var socket = io.connect("165.227.60.172/jelly");
-var socket = io.connect("http://192.168.0.2:8080/jelly");
+var socket = io.connect("165.227.60.172/jelly");
+// var socket = io.connect("http://192.168.0.2:8080/jelly");
 var canvas = document.getElementById('game');
 var ctx = canvas.getContext('2d');
 var playerScoreDivs = document.querySelectorAll('div.player-score');

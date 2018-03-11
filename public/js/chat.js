@@ -1,5 +1,5 @@
-// var socket = io.connect("165.227.60.172/chat");
-var socket = io.connect("http://192.168.0.2:8080/paint");
+var socket = io.connect("165.227.60.172/chat");
+// var socket = io.connect("http://192.168.0.2:8080/paint");
 
 
 var messages = document.getElementById('messages');
