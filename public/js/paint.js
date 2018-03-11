@@ -1,4 +1,6 @@
-var socket = io.connect("165.227.60.172");
+// var socket = io.connect("165.227.60.172/paint");
+var socket = io.connect("http://192.168.0.2:8080/paint");
+
 
 var pixelPainter = (function(){
 
@@ -67,7 +69,7 @@ var pixelPainter = (function(){
     if((count/2) < 2){
       userCount.innerHTML = `You're the only user online right now ;( Too bad!`;
     }else{
-      userCount.innerHTML = `There are ${count/2} users online right now! Party time!`
+      userCount.innerHTML = `There are ${count/2} users online right now! Party time!`;
     }
   });
 
