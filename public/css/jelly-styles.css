@@ -1,0 +1,26 @@
+#content{
+  display: flex;
+  justify-content: space-around;
+}
+
+#game-box{
+  background-image: url('/game-assets/scenery/background.png');
+  height: 500px;
+  width: 500px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.player-img{
+  height: 30px;
+  width: 30px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.player-score-card{
+  display: flex;
+  justify-content: space-around;
+}

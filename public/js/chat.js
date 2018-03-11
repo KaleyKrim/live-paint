@@ -1,4 +1,6 @@
-var socket = io.connect("165.227.60.172");
+// var socket = io.connect("165.227.60.172/chat");
+var socket = io.connect("http://192.168.0.2:8080/paint");
+
 
 var messages = document.getElementById('messages');
 var form = document.getElementById('form');
@@ -12,7 +14,7 @@ function postMessage(nameForClass, messageBody, placeToAppend){
   messageToPost.className = nameForClass;
   messageToPost.innerHTML = messageBody;
   placeToAppend.appendChild(messageToPost);
-};
+}
 
 form.addEventListener('submit', function(event){
   event.preventDefault();
